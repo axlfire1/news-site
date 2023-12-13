@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :news do
+  factory :news_wall do
     
   end
 end

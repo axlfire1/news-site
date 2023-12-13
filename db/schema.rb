@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_13_193758) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_13_203448) do
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -37,6 +37,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_193758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sections_id"], name: "index_news_on_sections_id"
+  end
+
+  create_table "news_walls", force: :cascade do |t|
+    t.string "slogan"
+    t.string "title"
+    t.string "subtitle"
+    t.string "author"
+    t.string "content"
+    t.integer "sections_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sections_id"], name: "index_news_walls_on_sections_id"
   end
 
   create_table "sections", force: :cascade do |t|

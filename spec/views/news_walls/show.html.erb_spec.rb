@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "news/show", type: :view do
+RSpec.describe "news_walls/show", type: :view do
   before(:each) do
-    assign(:news, News.create!())
+    assign(:news_wall, NewsWall.create!())
   end
 
   it "renders attributes in <p>" do

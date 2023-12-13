@@ -1,0 +1,2 @@
+module NewsWallsHelper
+end

@@ -12,10 +12,10 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/news", type: :request do
+RSpec.describe "/news_walls", type: :request do
   
   # This should return the minimal set of attributes required to create a valid
-  # News. As you add validations to News, be sure to
+  # NewsWall. As you add validations to NewsWall, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -27,59 +27,59 @@ RSpec.describe "/news", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      News.create! valid_attributes
-      get news_index_url
+      NewsWall.create! valid_attributes
+      get news_walls_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      news = News.create! valid_attributes
-      get news_url(news)
+      news_wall = NewsWall.create! valid_attributes
+      get news_wall_url(news_wall)
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_news_url
+      get new_news_wall_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /edit" do
     it "renders a successful response" do
-      news = News.create! valid_attributes
-      get edit_news_url(news)
+      news_wall = NewsWall.create! valid_attributes
+      get edit_news_wall_url(news_wall)
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new News" do
+      it "creates a new NewsWall" do
         expect {
-          post news_index_url, params: { news: valid_attributes }
-        }.to change(News, :count).by(1)
+          post news_walls_url, params: { news_wall: valid_attributes }
+        }.to change(NewsWall, :count).by(1)
       end
 
-      it "redirects to the created news" do
-        post news_index_url, params: { news: valid_attributes }
-        expect(response).to redirect_to(news_url(News.last))
+      it "redirects to the created news_wall" do
+        post news_walls_url, params: { news_wall: valid_attributes }
+        expect(response).to redirect_to(news_wall_url(NewsWall.last))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new News" do
+      it "does not create a new NewsWall" do
         expect {
-          post news_index_url, params: { news: invalid_attributes }
-        }.to change(News, :count).by(0)
+          post news_walls_url, params: { news_wall: invalid_attributes }
+        }.to change(NewsWall, :count).by(0)
       end
 
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post news_index_url, params: { news: invalid_attributes }
+        post news_walls_url, params: { news_wall: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
@@ -92,26 +92,26 @@ RSpec.describe "/news", type: :request do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested news" do
-        news = News.create! valid_attributes
-        patch news_url(news), params: { news: new_attributes }
-        news.reload
+      it "updates the requested news_wall" do
+        news_wall = NewsWall.create! valid_attributes
+        patch news_wall_url(news_wall), params: { news_wall: new_attributes }
+        news_wall.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the news" do
-        news = News.create! valid_attributes
-        patch news_url(news), params: { news: new_attributes }
-        news.reload
-        expect(response).to redirect_to(news_url(news))
+      it "redirects to the news_wall" do
+        news_wall = NewsWall.create! valid_attributes
+        patch news_wall_url(news_wall), params: { news_wall: new_attributes }
+        news_wall.reload
+        expect(response).to redirect_to(news_wall_url(news_wall))
       end
     end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        news = News.create! valid_attributes
-        patch news_url(news), params: { news: invalid_attributes }
+        news_wall = NewsWall.create! valid_attributes
+        patch news_wall_url(news_wall), params: { news_wall: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
@@ -119,17 +119,17 @@ RSpec.describe "/news", type: :request do
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested news" do
-      news = News.create! valid_attributes
+    it "destroys the requested news_wall" do
+      news_wall = NewsWall.create! valid_attributes
       expect {
-        delete news_url(news)
-      }.to change(News, :count).by(-1)
+        delete news_wall_url(news_wall)
+      }.to change(NewsWall, :count).by(-1)
     end
 
-    it "redirects to the news list" do
-      news = News.create! valid_attributes
-      delete news_url(news)
-      expect(response).to redirect_to(news_index_url)
+    it "redirects to the news_walls list" do
+      news_wall = NewsWall.create! valid_attributes
+      delete news_wall_url(news_wall)
+      expect(response).to redirect_to(news_walls_url)
     end
   end
 end
