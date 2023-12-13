@@ -46,7 +46,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ]
+  gem "byebug"
   gem 'rspec'
   gem "rspec-rails"
   gem "factory_bot_rails"
@@ -69,3 +69,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
+gem "devise", "~> 4.9"
+
+gem "activeadmin", "~> 3.2"
+gem 'webpacker', '~> 5.x'
