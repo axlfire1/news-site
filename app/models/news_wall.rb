@@ -8,4 +8,6 @@ class NewsWall < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     reflect_on_all_associations.map(&:name)
   end
+
+  validates_presence_of :title, :slogan, :content, :section
 end

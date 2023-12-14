@@ -1,7 +1,13 @@
 class Section < ApplicationRecord
+  has_many :news_wall
+
   def self.ransackable_attributes(auth_object = nil)
-    super & ['name'] # Add the attributes you want to make searchable
+    column_names
   end
-      
-  attr_accessor :name
+
+  def self.ransackable_associations(auth_object = nil)
+    ["news_wall"]
+  end
+
+  validates_presence_of :name
 end
