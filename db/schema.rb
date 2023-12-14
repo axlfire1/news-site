@@ -45,10 +45,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_203448) do
     t.string "subtitle"
     t.string "author"
     t.string "content"
-    t.integer "sections_id"
+    t.integer "section_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["sections_id"], name: "index_news_walls_on_sections_id"
+    t.index ["section_id"], name: "index_news_walls_on_section_id"
   end
 
   create_table "sections", force: :cascade do |t|

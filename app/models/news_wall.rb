@@ -1,7 +1,11 @@
 class NewsWall < ApplicationRecord
+  belongs_to :section
+
   def self.ransackable_attributes(auth_object = nil)
-    super & ['slogan', 'title', 'subtitle', 'author', 'content']
+    column_names
   end
 
-  attr_accessor :slogan, :title, :subtitle, :author, :content
+  def self.ransackable_associations(auth_object = nil)
+    reflect_on_all_associations.map(&:name)
+  end
 end

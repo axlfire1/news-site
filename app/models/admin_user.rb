@@ -5,8 +5,6 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def self.ransackable_attributes(auth_object = nil)
-    super & ['email', 'names', 'phone'] # Add the attributes you want to make searchable
+    column_names
   end
-      
-  attr_accessor :email, :names, :phone
 end

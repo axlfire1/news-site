@@ -6,7 +6,7 @@ class CreateNewsWalls < ActiveRecord::Migration[7.1]
       t.string :subtitle
       t.string :author
       t.string :content
-      t.references :sections
+      t.references :section
 
       t.timestamps
     end
