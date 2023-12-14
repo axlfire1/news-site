@@ -70,7 +70,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-
+gem 'ransack', '~> 4.1', '>= 4.1.1'
 gem "devise", "~> 4.9"
 
 gem "activeadmin", "~> 3.2"

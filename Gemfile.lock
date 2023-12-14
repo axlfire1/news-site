@@ -336,6 +336,7 @@ DEPENDENCIES
   jsbundling-rails
   puma (>= 5.0)
   rails (~> 7.1.2)
+  ransack (~> 4.1, >= 4.1.1)
   rspec
   rspec-rails
   selenium-webdriver
