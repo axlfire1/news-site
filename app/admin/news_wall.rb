@@ -1,4 +1,6 @@
 ActiveAdmin.register NewsWall do
+  permit_params :slogan, :title, :subtitle, :author, :content, :section_id
+
   index do
     selectable_column
     id_column
@@ -7,7 +9,7 @@ ActiveAdmin.register NewsWall do
     column :subtitle
     column :author
     column :content
-    column :section
+    column :section.name
 
     actions
   end
