@@ -75,3 +75,5 @@ gem "devise", "~> 4.9"
 
 gem "activeadmin", "~> 3.2"
 gem 'webpacker', '~> 5.x'
+
+gem 'carrierwave-aws'
