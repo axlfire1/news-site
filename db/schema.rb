@@ -29,8 +29,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_030353) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer "section_id"
-    t.boolean "is_enabled"
-    t.boolean "is_global"
+    t.boolean "is_enabled", default: false
+    t.boolean "is_global", default: false
     t.string "customer_name"
     t.string "customer_url"
     t.datetime "created_at", null: false
