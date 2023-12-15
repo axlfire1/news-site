@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_13_203448) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_15_030353) do
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -25,6 +25,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_203448) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.integer "section_id"
+    t.boolean "is_enabled"
+    t.boolean "is_global"
+    t.string "customer_name"
+    t.string "customer_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_announcements_on_section_id"
   end
 
   create_table "news", force: :cascade do |t|
