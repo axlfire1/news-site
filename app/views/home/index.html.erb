@@ -1,13 +1,54 @@
-<div>
-  <%= @news_wall.to_json %>
+<style>
+  .column {
+    float: left;
+    width: 50%;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+</style>
+
+<div class="row">
+  <div class="column">
+    <table>
+      <tr>
+        <% @news_wall.each do |t| %>
+          <td>
+            <%= t.slogan %>
+            <%= t.title %>
+            <%= t.subtitle %>
+            <%= t.author %>
+            <%= t.content %>
+            <%= t.section.name %>
+          </td>
+      </tr>
+        <% end %>
+    </table>
+  </div>
+  <div class="column">
+    <table>
+      <tr>
+        <% @announcements.each do |t| %>
+        <td>
+          <%= t.section.name %>
+          <%= t.is_enabled %>
+          <%= t.is_global %>
+          <%= t.customer_name %>
+          <%= t.customer_url %>
+        </td>  
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
 
 <div>
-  <%= @Announcements.to_json %>
-</div>
+  <%= paginate @news_wall %>
 
-<div>
   <%= link_to 'Load More', root_path(page: @news_wall.next_page), remote: true %>
 </div>
 
-<%= paginate @news_wall %>
