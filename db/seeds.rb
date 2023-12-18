@@ -19,26 +19,24 @@ if Rails.env == 'development'
   NewsWall.delete_all
   Announcement.delete_all
 
-  if Section.count == 0 && NewsWall.count
 
-    section = Section.create!(name: 'police')
-    100.times do |iterator|
-      NewsWall.create!(
-        slogan: "my eslogan",
-        title: "mytile_#{iterator}",
-        subtitle: "mysubtitle",
-        author: "my_author",
-        content: "my_content",
-        section: section
-      )
+  section = Section.create!(name: 'police')
+  100.times do |iterator|
+    NewsWall.create!(
+      slogan: "my eslogan",
+      title: "mytile_#{iterator}",
+      subtitle: "mysubtitle",
+      author: "my_author",
+      content: "my_content",
+      section: section
+    )
 
-      Announcement.create!(
-        section: section,
-        is_enabled: true,
-        is_global: true,
-        customer_name: "annoncement#{iterator}",
-        customer_url: "customer_us_#{iterator}"
-      )
-    end
+    Announcement.create!(
+      section: section,
+      is_enabled: true,
+      is_global: true,
+      customer_name: "annoncement#{iterator}",
+      customer_url: "customer_us_#{iterator}"
+    )
   end
 end
