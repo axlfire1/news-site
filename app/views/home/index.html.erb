@@ -1,2 +1,9 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div>
+  <%= @news_wall %>
+</div>
+
+<div>
+  <%= link_to 'Load More', root_path(page: @news_wall.next_page), remote: true %>
+</div>
+
+<%= paginate @news_wall %>

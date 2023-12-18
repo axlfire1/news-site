@@ -1,5 +1,6 @@
 class Section < ApplicationRecord
   has_many :news_wall
+  has_many :announcements
 
   def self.ransackable_attributes(auth_object = nil)
     column_names
