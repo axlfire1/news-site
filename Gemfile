@@ -79,3 +79,7 @@ gem 'webpacker', '~> 5.x'
 gem 'carrierwave-aws'
 
 gem 'kaminari'
+
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'jquery-rails'

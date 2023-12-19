@@ -1,62 +1,103 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  .column {
-    float: left;
-    width: 50%;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
+.menu {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+
+.menu a {
+  background-color: #e5e5e5;
+  padding: 8px;
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  color: black;
+}
+
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+}
+
+.right {
+  background-color: #e5e5e5;
+  float: left;
+  width: 20%;
+  padding: 15px;
+  margin-top: 7px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
   }
+}
 </style>
 
-<div class="row">
-  <div class="column">
-    <table class='table'>
-      <tr>
-        <% @news_wall.each_slice(2) do |item1, item2| %>
-          <td>
-            <%= item1.slogan if item1 %>
-            <%= item1.title if item1 %>
-            <%= item1.subtitle if item1 %>
-            <%= item1.author if item1 %>
-            <%= item1.content if item1 %>
-            <%= item1.section.name if item1 %>
-          </td>
-          <td>
-            <%= item2.slogan if item2 %>
-            <%= item2.title if item2 %>
-            <%= item2.subtitle if item2 %>
-            <%= item2.author if item2 %>
-            <%= item2.content if item2 %>
-            <%= item2.section.name if item2 %>
-          </td>
-      </tr>
+<body style="font-family:Verdana;color:#aaaaaa;">
+
+<div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+  <h1>Hello World</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+  </div>
+
+  <div class="main">
+    <h2>Contenedor principal</h2>
+    <div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">noticias de a indio</div>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @news_wall.each_slice(2) do |items| %>
+            <tr>
+              <% items.each do |item| %>
+                <td><%= item.slogan %></td>
+                <td><%= item.title %></td>
+                <td><%= item.subtitle %></td>
+                <td><%= item.content %></td>
+                <td><%= item.section.name %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div>
+        <%= paginate @news_wall %>
+      </div>
+  </div>
+
+  <div class="right">
+    <h2>Anuncios</h2>
+    <div>
+      <table>
+        <tr>
+          <% @announcements.each do |t| %>
+          <td> <%= t.customer_name %> </td>
+          <td> <%= t.customer_url %> </td>
+        </tr>
         <% end %>
-    </table>
-  </div>
-  <div class="column">
-    <table>
-      <tr>
-        <% @announcements.each do |t| %>
-        <td>
-          <%= t.section.name %>
-          <%= t.is_enabled %>
-          <%= t.is_global %>
-          <%= t.customer_name %>
-          <%= t.customer_url %>
-        </td>  
-      </tr>
-      <% end %>
-    </table>
+      </table>
+    </div>
   </div>
 </div>
-
-<div>
-  <%= paginate @news_wall %>
-
-  <%= link_to 'Load More', root_path(page: @news_wall.next_page), remote: true %>
-</div>
-
