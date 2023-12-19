@@ -14,16 +14,24 @@
 
 <div class="row">
   <div class="column">
-    <table>
+    <table class='table'>
       <tr>
-        <% @news_wall.each do |t| %>
+        <% @news_wall.each_slice(2) do |item1, item2| %>
           <td>
-            <%= t.slogan %>
-            <%= t.title %>
-            <%= t.subtitle %>
-            <%= t.author %>
-            <%= t.content %>
-            <%= t.section.name %>
+            <%= item1.slogan if item1 %>
+            <%= item1.title if item1 %>
+            <%= item1.subtitle if item1 %>
+            <%= item1.author if item1 %>
+            <%= item1.content if item1 %>
+            <%= item1.section.name if item1 %>
+          </td>
+          <td>
+            <%= item2.slogan if item2 %>
+            <%= item2.title if item2 %>
+            <%= item2.subtitle if item2 %>
+            <%= item2.author if item2 %>
+            <%= item2.content if item2 %>
+            <%= item2.section.name if item2 %>
           </td>
       </tr>
         <% end %>
