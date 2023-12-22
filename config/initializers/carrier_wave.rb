@@ -1,9 +1,24 @@
 CarrierWave.configure do |config|
-  config.fog_credentials = {
-    provider: 'AWS',
-    aws_access_key_id: Rails.application.credentials.aws.access_key_id,
-    aws_secret_access_key: Rails.application.credentials.aws.secret_access_key,
-    region: 'us-east-1'
-  }
-  config.fog_directory = 'news-site-announcements'
+  # Use local file storage for development and test environments
+  #if Rails.env.development? || Rails.env.test?
+    #config.storage = :file
+    #config.enable_processing = false
+  #else
+    config.storage = :fog
+    config.fog_credentials = {
+      provider: 'AWS',
+      region: 'us-east-1',
+      aws_access_key_id: Rails.application.credentials.aws.access_key_id,
+      aws_secret_access_key: Rails.application.credentials.aws.secret_access_key
+    }
+    config.fog_directory = 'news-site-announcements'
+  #end
+
+  # Define a cache storage for temporary uploads
+  config.cache_storage = :file
+
+  # Set the cache directory
+  config.cache_dir = "#{Rails.root}/tmp/uploads"
+
+  # Additional configurations go here
 end
