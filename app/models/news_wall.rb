@@ -1,5 +1,6 @@
 class NewsWall < ApplicationRecord
   belongs_to :section
+  mount_uploader :image, ImageUploader
 
   def self.ransackable_attributes(auth_object = nil)
     column_names

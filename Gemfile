@@ -39,7 +39,8 @@ gem 'ransack', '~> 4.1', '>= 4.1.1'
 gem "devise", "~> 4.9"
 gem "activeadmin", "~> 3.2"
 gem 'webpacker', '~> 5.x'
-gem 'carrierwave-aws'
+gem 'carrierwave'
+gem 'fog-aws', '~> 3.21'
 gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
