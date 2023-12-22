@@ -1,6 +1,6 @@
 CarrierWave.configure do |config|
     config.storage    = :aws
-    config.aws_bucket = ENV['S3_BUCKET_NAME'] # for AWS-side bucket access permissions config, see section below
+    config.aws_bucket = 'news-site-announcements' # for AWS-side bucket access permissions config, see section below
     config.aws_acl    = 'private'
   
     # Optionally define an asset host for configurations that are fronted by a
@@ -19,10 +19,10 @@ CarrierWave.configure do |config|
     } }
   
     config.aws_credentials = {
-      access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-      region:            ENV['AWS_REGION'], # Required
-      stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
+      access_key_id:     Rails.application.credentials.aws.access_key_id,
+      secret_access_key:  Rails.application.credentials.aws.secret_access_key,
+      region:            'us-east-1',
+      stub_responses:    Rails.env.test?
     }
   
     # Optional: Signing of download urls, e.g. for serving private content through
