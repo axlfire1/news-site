@@ -51,10 +51,8 @@ ActiveAdmin.register NewsWall do
       row :section do |row|
         row.section&.name
       end
-      if resource.image?
-        panel 'Image' do
-          image_tag resource.image.url
-        end
+      row :image do |resource|
+        image_tag resource.image.thumb.url if resource.image?
       end
     end
 

@@ -1,9 +1,9 @@
 CarrierWave.configure do |config|
   # Use local file storage for development and test environments
-  if Rails.env.development? || Rails.env.test?
-    config.storage = :file
-    config.enable_processing = false
-  else
+  #if Rails.env.development? || Rails.env.test?
+   # config.storage = :file
+    #config.enable_processing = false
+  #else
     config.storage = :fog
     config.fog_credentials = {
       provider: 'AWS',
@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: Rails.application.credentials.aws.secret_access_key
     }
     config.fog_directory = 'news-site-announcements'
-  end
+  #end
 
   config.cache_storage = :file
   config.cache_dir = "#{Rails.root}/tmp/uploads"
