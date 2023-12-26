@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_22_001308) do
     t.string "title"
     t.string "subtitle"
     t.string "author"
-    t.string "content"
+    t.text "content"
     t.integer "section_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

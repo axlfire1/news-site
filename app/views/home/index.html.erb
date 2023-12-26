@@ -5,10 +5,9 @@
       <div class="top_menu floatleft">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact us</a></li>
-          <li><a href="#">Subscribe</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a href="#">Acerca</a></li>
+          <li><a href="#">Contacto</a></li>
+          <li><%= link_to  'Login', new_admin_user_session_path %></li>
         </ul>
       </div>
       <div class="social_plus_search floatright">
@@ -21,127 +20,47 @@
         </div>
         <div class="search">
           <form action="#" method="post" id="search_form">
-            <input type="text" value="Search news" id="s" />
+            <input type="text" placeholder="buscar noticias" value="" id="s" />
             <input type="submit" id="searchform" value="search" />
             <input type="hidden" value="post" name="post_type" />
           </form>
         </div>
       </div>
     </div>
+
     <div class="main_menu_area">
       <ul id="nav">
-        <li><a href="#">world news</a>
-          <ul>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a>
-              <ul>
-                <li><a href="#">Single item</a></li>
-                <li><a href="#">Single item</a></li>
-                <li><a href="#">Single item</a></li>
-                <li><a href="#">Single item</a></li>
-                <li><a href="#">Single item</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-          </ul>
-        </li>
-        <li><a href="#">sports</a></li>
-        <li><a href="#">tech</a>
-          <ul>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-          </ul>
-        </li>
-        <li><a href="#">business</a></li>
-        <li><a href="#">Movies</a>
-          <ul>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a>
-              <ul>
-                <li><a href="#">Single item</a></li>
-                <li><a href="#">Single item</a></li>
-                <li><a href="#">Single item</a></li>
-                <li><a href="#">Single item</a></li>
-                <li><a href="#">Single item</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-          </ul>
-        </li>
-        <li><a href="#">entertainment</a></li>
-        <li><a href="#">culture</a></li>
-        <li><a href="#">Books</a>
-          <ul>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-            <li><a href="#">Single item</a></li>
-          </ul>
-        </li>
-        <li><a href="#">classifieds</a></li>
-        <li><a href="#">blogs</a></li>
+        <% @sections.each do |it| %>
+          <li>
+            <a href=""><%= it[1] %></a>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="slider_area">
     </div>
+
     <div class="content_area">
       <div class="main_content floatleft">
         <div class="left_coloum floatleft">
           <div class="single_left_coloum_wrapper">
-            <h2 class="title">from   around   the   world</h2>
-            <a class="more" href="#">more</a>
-            <div class="single_left_coloum floatleft"> <%= image_tag('single_featured.png') %>
-              <h3>Lorem ipsum dolor sit amet, consectetur</h3>
-              <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper 
-                dolor eu mattis.</p>
-              <a class="readmore" href="#">read more</a> </div>
-            <div class="single_left_coloum floatleft"> <%= image_tag('single_featured.png') %>
-              <h3>Lorem ipsum dolor sit amet, consectetur</h3>
-              <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper 
-                dolor eu mattis.</p>
-              <a class="readmore" href="#">read more</a> </div>
-            <div class="single_left_coloum floatleft"> <%= image_tag('single_featured.png') %>
-              <h3>Lorem ipsum dolor sit amet, consectetur</h3>
-              <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper 
-                dolor eu mattis.</p>
-              <a class="readmore" href="#">read more</a> </div>
-          </div>
-          <div class="single_left_coloum_wrapper">
-            <h2 class="title">latest  articles</h2>
-            <a class="more" href="#">more</a>
-            
-          <% @news_wall.each_slice(2) do |items| %>
-            <% items.each do |item| %>
-              <div class="single_left_coloum floatleft"> <%= image_tag item.image.thumb.url if item.image? %>
-                <h3><%= item.slogan %> <%= item.title %> <%= item.subtitle %></h3>
-                <p><%= item.content %> <%= item.section.name %></p>
-                <a class="readmore" href="#">read more</a>
-              </div>
+            <h2 class="title">Las Ultimas Noticias</h2>
+            <a class="more">V</a>
+            <% @news_wall.each_slice(2) do |items| %>
+              <% items.each do |item| %>
+                <div class="single_left_coloum floatleft"> <%= image_tag(item.image.thumb.url, style: 'height:100px;width:145px;') if item.image? %>
+                  <h3><%= item.slogan %> <%= item.title %> <%= item.subtitle %></h3>
+                  <p><%= item.content %> <%= item.section.name %></p>
+                  <a class="readmore" href="#">read more</a>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
-          <%= paginate @news_wall %>
+            <p class="news-letter-privacy"><%= paginate @news_wall %></p>
           </div>
-          <div class="single_left_coloum_wrapper gallery">
-            <h2 class="title">gallery</h2>
-            <a class="more" href="#">more</a> 
-              <%= image_tag('single_featured.png') %>
-              <%= image_tag('single_featured.png') %>
-              <%= image_tag('single_featured.png') %>
-              <%= image_tag('single_featured.png') %>
-              <%= image_tag('single_featured.png') %>
-              <%= image_tag('single_featured.png') %>
-          </div>
+
           <div class="single_left_coloum_wrapper single_cat_left">
-            <h2 class="title">tech news</h2>
-            <a class="more" href="#">more</a>
+            <h2 class="title">Articulos</h2>
+            <a class="more" href="#">Más</a>
             <div class="single_cat_left_content floatleft">
               <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit </h3>
               <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ...interdum</p>
@@ -166,7 +85,7 @@
         </div>
         <div class="right_coloum floatright">
           <div class="single_right_coloum">
-            <h2 class="title">from the desk</h2>
+            <h2 class="title">Popular</h2>
             <ul>
               <li>
                 <div class="single_cat_right_content">
@@ -192,26 +111,12 @@
             </ul>
             <a class="popular_more" href="#">more</a> </div>
           <div class="single_right_coloum">
-            <h2 class="title">editorial</h2>
-            <div class="single_cat_right_content editorial"> <%= image_tag('editorial_img.png') %>
-              <h3>Lorem ipsum dolor sit amet con se cte tur adipiscing elit</h3>
-            </div>
-            <div class="single_cat_right_content editorial"> <%= image_tag('editorial_img.png') %>
-              <h3>Lorem ipsum dolor sit amet con se cte tur adipiscing elit</h3>
-            </div>
-            <div class="single_cat_right_content editorial"> <%= image_tag('editorial_img.png') %>
-              <h3>Lorem ipsum dolor sit amet con se cte tur adipiscing elit</h3>
-            </div>
-            <div class="single_cat_right_content editorial"><%= image_tag('editorial_img.png') %>
-              <h3>Lorem ipsum dolor sit amet con se cte tur adipiscing elit</h3>
-            </div>
+
           </div>
         </div>
       </div>
+
       <div class="sidebar floatright">
-
-
-
         <% @announcements.each do |t| %>
           <div class="single_sidebar"> <%= image_tag('add1.png') %></div>
           <%= t.customer_name %>
@@ -219,53 +124,10 @@
         <% end %>
 
         <div class="single_sidebar">
-          <div class="news-letter">
-            <h2>Sign Up for Newsletter</h2>
-            <p>Sign up to receive our free newsletters!</p>
-            <form action="#" method="post">
-              <input type="text" value="Name" id="name" />
-              <input type="text" value="Email Address" id="email" />
-              <input type="submit" value="SUBMIT" id="form-submit" />
-            </form>
-            <p class="news-letter-privacy">We do not spam. We value your privacy!</p>
-          </div>
         </div>
         <div class="single_sidebar">
           <div class="popular">
-            <h2 class="title">Popular</h2>
-            <ul>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-            </ul>
-            <a class="popular_more">more</a> </div>
+          </div>
         </div>
         <div class="single_sidebar"> <%= image_tag('add1.png') %> </div>
         <div class="single_sidebar">
@@ -274,27 +136,23 @@
         </div>
       </div>
     </div>
+
     <div class="footer_top_area">
       <div class="inner_footer_top"> <%= image_tag('add3.png') %> </div>
     </div>
+
     <div class="footer_bottom_area">
       <div class="footer_menu">
         <ul id="f_menu">
-          <li><a href="#">world news</a></li>
-          <li><a href="#">sports</a></li>
-          <li><a href="#">tech</a></li>
-          <li><a href="#">business</a></li>
-          <li><a href="#">Movies</a></li>
-          <li><a href="#">entertainment</a></li>
-          <li><a href="#">culture</a></li>
-          <li><a href="#">Books</a></li>
-          <li><a href="#">classifieds</a></li>
-          <li><a href="#">blogs</a></li>
+          <% @sections.each do |it| %>
+            <li>
+              <a href=""><%= it[1].try(:downcase) %></a>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="copyright_text">
-        <p>Copyright &copy; 2045 The News Reporter Inc. All rights reserved | Design by <a target="_blank" rel="nofollow" href="http://www.graphicsfuel.com/2045/10/wp-magazine-theme-template-psd/">Rafi MD</a></p>
-        <p>Trade marks and images used in the design are the copyright of their respective owners and are used for demo purposes only.</p>
+        <p>Copyright &copy; All rights reserved | Deseñado por <a target="_blank" rel="nofollow" href="https://www.linkedin.com/in/davidsarmiento5/">David Sarmiento</a></p>
       </div>
     </div>
   </div>
