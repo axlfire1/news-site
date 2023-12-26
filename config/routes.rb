@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/new_details/:id', to: 'new_details#show', as: 'new_details'
   resources :announcements
   resources :news_walls
   devise_for :admin_users, ActiveAdmin::Devise.config

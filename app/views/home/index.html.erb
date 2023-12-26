@@ -51,7 +51,7 @@
                 <div class="single_left_coloum floatleft"> <%= image_tag(item.image.thumb.url, style: 'height:100px;width:145px;') if item.image? %>
                   <h3><%= item.slogan %> <%= item.title %> <%= item.subtitle %></h3>
                   <p><%= item.content %> <%= item.section.name %></p>
-                  <a class="readmore" href="#">read more</a>
+                  <%= link_to 'read more', new_details_path(item.id), class: "readmore" %>
                 </div>
               <% end %>
             <% end %>
@@ -59,7 +59,7 @@
           </div>
 
           <div class="single_left_coloum_wrapper single_cat_left">
-            <h2 class="title">Articulos</h2>
+            <h2 class="title">Popular</h2>
             <a class="more" href="#">Más</a>
             <div class="single_cat_left_content floatleft">
               <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit </h3>
@@ -85,7 +85,7 @@
         </div>
         <div class="right_coloum floatright">
           <div class="single_right_coloum">
-            <h2 class="title">Popular</h2>
+            <h2 class="title">Articulos</h2>
             <ul>
               <li>
                 <div class="single_cat_right_content">
