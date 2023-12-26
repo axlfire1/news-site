@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  get '/new_details/:id', to: 'new_details#show', as: 'new_details'
   resources :announcements
   resources :news_walls
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root "home#index"
   resources :sections
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

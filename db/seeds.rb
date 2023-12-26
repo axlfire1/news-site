@@ -8,8 +8,35 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-admin_user = AdminUser.find_by(email: 'admin@example.com')
+if Rails.env == 'development'
+  admin_user = AdminUser.find_by(email: 'admin@example.com')
 
-if admin_user
-  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? && !admin_user
+  if admin_user
+    AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? && !admin_user
+  end
+
+  Section.delete_all
+  NewsWall.delete_all
+  Announcement.delete_all
+
+
+  section = Section.create!(name: 'police')
+  100.times do |iterator|
+    NewsWall.create!(
+      slogan: "my eslogan",
+      title: "mytile_#{iterator}",
+      subtitle: "mysubtitle",
+      author: "my_author",
+      content: "my_content",
+      section: section
+    )
+
+    Announcement.create!(
+      section: section,
+      is_enabled: true,
+      is_global: true,
+      customer_name: "annoncement#{iterator}",
+      customer_url: "customer_us_#{iterator}"
+    )
+  end
 end

@@ -1,5 +1,5 @@
 ActiveAdmin.register NewsWall do
-  permit_params :slogan, :title, :subtitle, :author, :content, :section_id
+  permit_params :slogan, :title, :subtitle, :author, :content, :section_id, :image
 
   filter :email
   filter :current_sign_in_at
@@ -26,6 +26,7 @@ ActiveAdmin.register NewsWall do
       f.input :subtitle
       f.input :author
       f.input :content
+      f.input :image, as: :file
       f.input :section, as: :select, collection: Section.all.order(name: :asc).map { |s| [s.name, s.id] }
     end
 
@@ -49,6 +50,9 @@ ActiveAdmin.register NewsWall do
       row :content
       row :section do |row|
         row.section&.name
+      end
+      row :image do |resource|
+        image_tag resource.image.thumb.url if resource.image?
       end
     end
 

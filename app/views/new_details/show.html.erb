@@ -1,0 +1,79 @@
+<style>
+    /* Set background color for the entire table */
+    table {
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+      background-color: #f2f2f2; /* Light gray background color */
+    }
+
+    /* Set background color for even rows */
+    tr:nth-child(even) {
+      background-color: #e6e6e6; /* Lighter gray background color */
+    }
+
+    /* Set background color for odd rows */
+    tr:nth-child(odd) {
+      background-color: #ffffff; /* White background color */
+    }
+
+    /* Set background color for a specific cell (e.g., the header cell) */
+    th {
+      background-color: #4CAF50; /* Green background color */
+      color: white; /* White text color */
+    }
+  </style>
+
+<table style="background-color: white">
+  <tr>
+    <td>
+      <%= @new_details.id %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @new_details.slogan %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @new_details.title %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @new_details.subtitle %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @new_details.author %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @new_details.content %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @new_details.section.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @new_details.created_at %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= image_tag(@new_details.image.thumb.url, style: 'height:100px;width:145px;') if @new_details.image? %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to "Regresar", root_path %>
+    </td>
+  </tr>
+</table>
