@@ -89,7 +89,7 @@
             <ul>
               <% @articles.each do |item| %>
                 <div>
-                  <%= link_to(new_details_path(item.id)) do %>
+                  <%= link_to(articles_path(item.id)) do %>
                     <%= image_tag(item.image.thumb.url, style: 'height:100px;width:100px; rounded=true; background-size: cover; display: block; border-radius: 100px; -webkit-border-radius: 100px; -moz-border-radius: 100px;') if item.image? %>
                     <h3><%= item.title %></h3>
                     <p class="single_cat_left_content_meta">Por <span><%= item.author %></span></p>              

@@ -1,0 +1,74 @@
+<style>
+    /* Set background color for the entire table */
+    table {
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+      background-color: #f2f2f2; /* Light gray background color */
+    }
+
+    /* Set background color for even rows */
+    tr:nth-child(even) {
+      background-color: #e6e6e6; /* Lighter gray background color */
+    }
+
+    /* Set background color for odd rows */
+    tr:nth-child(odd) {
+      background-color: #ffffff; /* White background color */
+    }
+
+    /* Set background color for a specific cell (e.g., the header cell) */
+    th {
+      background-color: #4CAF50; /* Green background color */
+      color: white; /* White text color */
+    }
+  </style>
+
+<table style="background-color: white">
+  <tr>
+    <td>
+      <%= @article.id %>
+    </td>
+  </tr>
+   <tr>
+    <td>
+      <%= image_tag(@article.image.thumb.url, style: 'height:100px;width:145px;') if @article.image? %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @article.title %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @article.author %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @article.content %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @article.social_media_contact %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @article.foot_note %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @article.created_at %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to "Regresar", root_path %>
+    </td>
+  </tr>
+</table>
