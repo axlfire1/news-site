@@ -49,9 +49,9 @@
             <% @news_wall.each_slice(2) do |items| %>
               <% items.each do |item| %>
                 <div class="single_left_coloum floatleft"> <%= image_tag(item.image.thumb.url, style: 'height:100px;width:145px;') if item.image? %>
-                  <h3><%= item.slogan %> <%= item.title %> <%= item.subtitle %></h3>
+                  <h2><%= item.slogan %> <%= item.title %> <%= item.subtitle %></h2>
                   <p><%= item.content %> <%= item.section.name %></p>
-                  <%= link_to 'read more', new_details_path(item.id), class: "readmore" %>
+                  <%= link_to 'Leer más', new_details_path(item.id), class: "readmore" %>
                 </div>
               <% end %>
             <% end %>
@@ -60,7 +60,7 @@
 
           <div class="single_left_coloum_wrapper single_cat_left">
             <h2 class="title">Popular</h2>
-            <a class="more" href="#">Más</a>
+            <a class="more" href="#">V</a>
             <div class="single_cat_left_content floatleft">
               <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit </h3>
               <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ...interdum</p>
@@ -87,31 +87,18 @@
           <div class="single_right_coloum">
             <h2 class="title">Articulos</h2>
             <ul>
-              <li>
-                <div class="single_cat_right_content">
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit</h3>
-                  <p>Nulla quis lorem neque, mattis venen atis lectus. In interdum ull amcorper dolor eu mattis.</p>
-                  <p class="single_cat_right_content_meta"><a href="#"><span>read more</span></a> 3 hours ago</p>
-                </div>
-              </li>
-              <li>
-                <div class="single_cat_right_content">
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit</h3>
-                  <p>Nulla quis lorem neque, mattis venen atis lectus. In interdum ull amcorper dolor eu mattis.</p>
-                  <p class="single_cat_right_content_meta"><a href="#"><span>read more</span></a> 3 hours ago</p>
-                </div>
-              </li>
-              <li>
-                <div class="single_cat_right_content">
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit</h3>
-                  <p>Nulla quis lorem neque, mattis venen atis lectus. In interdum ull amcorper dolor eu mattis.</p>
-                  <p class="single_cat_right_content_meta"><a href="#"><span>read more</span></a> 3 hours ago</p>
-                </div>
-              </li>
-            </ul>
-            <a class="popular_more" href="#">more</a> </div>
-          <div class="single_right_coloum">
+              <% @articles.each do |item| %>
+                <div>
+                  <%= link_to(new_details_path(item.id)) do %>
+                    <%= image_tag(item.image.thumb.url, style: 'height:100px;width:100px; rounded=true; background-size: cover; display: block; border-radius: 100px; -webkit-border-radius: 100px; -moz-border-radius: 100px;') if item.image? %>
+                    <h3><%= item.title %></h3>
+                    <p class="single_cat_left_content_meta">Por <span><%= item.author %></span></p>              
 
+                    Hace <%= time_ago_in_words(item.created_at) %>
+                  <% end %>
+                </div>
+              <% end %>
+            </ul>
           </div>
         </div>
       </div>
