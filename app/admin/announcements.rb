@@ -1,7 +1,7 @@
 ActiveAdmin.register Announcement do
   actions :all, except: [:destroy]
 
-  permit_params :section_id, :is_enabled, :is_global, :customer_name, :customer_url
+  permit_params :section_id, :is_enabled, :is_global, :customer_name, :customer_url, :image
 
   member_action :delete_announcement_element, method: :delete do
     if resource.destroy
@@ -14,6 +14,9 @@ ActiveAdmin.register Announcement do
   show do
     attributes_table do
       row :section_id
+      row :image do |resource|
+        image_tag resource.image.thumb.url if resource.image?
+      end
       row :is_enabled
       row :is_global
       row :customer_name

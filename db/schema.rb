@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_27_021913) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_031308) do
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_021913) do
     t.string "customer_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["section_id"], name: "index_announcements_on_section_id"
   end
 

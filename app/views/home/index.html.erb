@@ -48,41 +48,19 @@
             <a class="more">V</a>
             <% @news_wall.each_slice(2) do |items| %>
               <% items.each do |item| %>
-                <div class="single_left_coloum floatleft"> <%= image_tag(item.image.thumb.url, style: 'height:100px;width:145px;') if item.image? %>
-                  <h2><%= item.slogan %> <%= item.title %> <%= item.subtitle %></h2>
-                  <p><%= item.content %> <%= item.section.name %></p>
-                  <%= link_to 'Leer más', new_details_path(item.id), class: "readmore" %>
-                </div>
+                <%= link_to(new_details_path(item.id)) do %>
+                  <div class="single_left_coloum floatleft"> <%= image_tag(item.image.thumb.url, style: 'height:100px;width:145px;') if item.image? %>
+                    <h2><%= item.slogan %> <%= item.title %> <%= item.subtitle %></h2>
+                    <p><%= "#{item.content[0..50]}..." %></p>
+                    <%= link_to 'Leer más', new_details_path(item.id), class: "readmore" %>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
             <p class="news-letter-privacy"><%= paginate @news_wall %></p>
           </div>
-
-          <div class="single_left_coloum_wrapper single_cat_left">
-            <h2 class="title">Popular</h2>
-            <a class="more" href="#">V</a>
-            <div class="single_cat_left_content floatleft">
-              <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit </h3>
-              <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ...interdum</p>
-              <p class="single_cat_left_content_meta">by <span>John Doe</span> |  29 comments</p>
-            </div>
-            <div class="single_cat_left_content floatleft">
-              <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit </h3>
-              <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ...interdum</p>
-              <p class="single_cat_left_content_meta">by <span>John Doe</span> |  29 comments</p>
-            </div>
-            <div class="single_cat_left_content floatleft">
-              <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit </h3>
-              <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ...interdum</p>
-              <p class="single_cat_left_content_meta">by <span>John Doe</span> |  29 comments</p>
-            </div>
-            <div class="single_cat_left_content floatleft">
-              <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit </h3>
-              <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ...interdum</p>
-              <p class="single_cat_left_content_meta">by <span>John Doe</span> |  29 comments</p>
-            </div>
-          </div>
         </div>
+
         <div class="right_coloum floatright">
           <div class="single_right_coloum">
             <h2 class="title">Articulos</h2>
@@ -104,22 +82,15 @@
       </div>
 
       <div class="sidebar floatright">
-        <% @announcements.each do |t| %>
-          <div class="single_sidebar"> <%= image_tag('add1.png') %></div>
-          <%= t.customer_name %>
-          <%= t.customer_url %>
-        <% end %>
-
         <div class="single_sidebar">
-        </div>
-        <div class="single_sidebar">
-          <div class="popular">
-          </div>
-        </div>
-        <div class="single_sidebar"> <%= image_tag('add1.png') %> </div>
-        <div class="single_sidebar">
-          <h2 class="title">ADD</h2>
-          <%= image_tag('add2.png') %>
+          <h2 class="title">Anuncios</h2>
+          <% @announcements.each do |t| %>
+            <div class="single_sidebar">
+              <%= link_to t.customer_url, target: '_BLANK' do %>
+                <%= image_tag(t.image.thumb.url, style: 'height:170px;width:auto;') if t.image? %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
