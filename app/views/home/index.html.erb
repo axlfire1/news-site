@@ -52,7 +52,7 @@
                   <div class="single_left_coloum floatleft"> <%= image_tag(item.image.thumb.url, style: 'height:100px;width:145px;') if item.image? %>
                     <h2><%= item.slogan %> <%= item.title %> <%= item.subtitle %></h2>
                     <p><%= "#{item.content[0..50]}..." %></p>
-                    <%= link_to 'Leer más', new_details_path(item.id), class: "readmore" %>
+                    <%= link_to item.section.name, new_details_path(item.id), class: "readmore" %>
                   </div>
                 <% end %>
               <% end %>
