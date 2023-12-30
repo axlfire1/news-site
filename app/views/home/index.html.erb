@@ -1,3 +1,57 @@
+    <style>
+      .news-container {
+            max-width: 800px;
+            margin: 0px auto;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .news-item img {
+            max-width: 200px;
+            height: auto;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .news-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .news-date {
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        .news-content {
+            line-height: 1.5;
+        }
+ 
+        .right {
+          position: absolute;
+          right: 0px;
+          width: 300px;
+          border: 3px solid #73AD21;
+          padding: 10px;
+        }
+    </style>
+
+
 <div class="body_wrapper">
   <div class="center">
     <div class="header_area">
@@ -49,15 +103,21 @@
             <% @news_wall.each_slice(2) do |items| %>
               <% items.each do |item| %>
                 <%= link_to(new_details_path(item.id)) do %>
-                  <div class="single_left_coloum floatleft"> <%= image_tag(item.image.thumb.url, style: 'height:100px;width:145px;') if item.image? %>
-                    <h2><%= item.title %> <%= item.subtitle %></h2>
-                    <p><%= "#{item.content[0..50]}..." %></p>
-                    <%= link_to item.section.name, new_details_path(item.id), class: "readmore" %>
+                  <div class="news-item floatleft">
+                    <%= image_tag(item.image.thumb.url) if item.image? %>
+                    <div class="news-container">
+                      <div class="news-title"><%= item.title %></div>
+                      <div class="news-content">
+                          <div><%= "#{item.content[0..120]}..." %> <div style="color:red; text-align: center;" >Leer más</div></div>
+                      </div>
+                      <%= link_to item.section.name, new_details_path(item.id), class: "readmore" %>
+                      <div class="news-date"> <%= time_ago_in_words(item.created_at) %></div>
+                    </div>
                   </div>
                 <% end %>
               <% end %>
             <% end %>
-            <p class="news-letter-privacy"><%= paginate @news_wall %></p>
+              <p class="news-letter-privacy"><%= paginate @news_wall %></p>
           </div>
         </div>
 
