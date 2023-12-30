@@ -51,7 +51,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_031308) do
   end
 
   create_table "news", force: :cascade do |t|
-    t.string "slogan"
     t.string "title"
     t.string "subtitle"
     t.string "author"
@@ -63,7 +62,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_031308) do
   end
 
   create_table "news_walls", force: :cascade do |t|
-    t.string "slogan"
     t.string "title"
     t.string "subtitle"
     t.string "author"
