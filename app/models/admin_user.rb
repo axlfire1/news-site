@@ -4,6 +4,10 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable
 
+  enum role: [:admin, :publisher]
+
+  validates :role, presence: true
+
   def self.ransackable_attributes(auth_object = nil)
     column_names
   end

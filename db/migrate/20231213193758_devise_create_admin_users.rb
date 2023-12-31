@@ -36,7 +36,7 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration[7.1]
       t.string :names
       t.string :last_name
       t.string :phone
-      t.string :role
+      t.integer :role
 
       t.timestamps null: false
     end

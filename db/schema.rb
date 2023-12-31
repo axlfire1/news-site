@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_021913) do
     t.string "names"
     t.string "last_name"
     t.string "phone"
-    t.string "role"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
@@ -47,18 +47,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_021913) do
     t.text "foot_note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "news", force: :cascade do |t|
-    t.string "slogan"
-    t.string "title"
-    t.string "subtitle"
-    t.string "author"
-    t.string "content"
-    t.integer "sections_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["sections_id"], name: "index_news_on_sections_id"
   end
 
   create_table "news_walls", force: :cascade do |t|
