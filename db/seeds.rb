@@ -9,16 +9,14 @@
 #   end
 
 if Rails.env == 'development'
-  admin_user = AdminUser.find_by(email: 'admin@example.com')
-
-  if admin_user
-    AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? && !admin_user
-  end
-
   Section.delete_all
+  AdminUser.delete_all
   NewsWall.delete_all
   Announcement.delete_all
 
+  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role: 0) 
+  AdminUser.create!(email: 'publisher1@example.com', password: 'password', password_confirmation: 'password', role: 1) 
+  AdminUser.create!(email: 'publisher2@example.com', password: 'password', password_confirmation: 'password', role: 1) 
 
   section = Section.create!(name: 'police')
   100.times do |iterator|

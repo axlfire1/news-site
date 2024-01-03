@@ -8,7 +8,8 @@
     "@rails/webpacker": "5.4.4",
     "esbuild": "^0.19.9",
     "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "fsevents": "2"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets"

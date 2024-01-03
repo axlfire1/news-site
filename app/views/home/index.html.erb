@@ -1,4 +1,4 @@
-    <style>
+<style>
       .news-container {
             max-width: 800px;
             margin: 0px auto;
@@ -138,13 +138,14 @@
               <% end %>
             </ul>
           </div>
-      </div>
+        </div>
       </div>
 
       <div class="sidebar floatright">
         <div class="single_sidebar">
           <h2 class="title">Anuncios</h2>
           <% @announcements.each do |t| %>
+          
             <div class="single_sidebar">
               <%= link_to t.customer_url, target: '_BLANK' do %>
                 <%= image_tag(t.image.thumb.url, style: 'height:170px;width:auto;') if t.image? %>

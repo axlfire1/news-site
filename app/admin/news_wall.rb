@@ -57,4 +57,10 @@ ActiveAdmin.register NewsWall do
       button_to 'Delete', delete_news_wall_element_path, method: :delete, data: { confirm: 'Are you sure?' }
     end
   end
+
+  controller do
+    def current_ability
+      @current_ability ||= Ability.new(current_admin_user)
+    end
+  end
 end
