@@ -21,7 +21,6 @@ if Rails.env == 'development'
   section = Section.create!(name: 'police')
   100.times do |iterator|
     NewsWall.create!(
-      slogan: "my eslogan",
       title: "mytile_#{iterator}",
       subtitle: "mysubtitle",
       author: "my_author",

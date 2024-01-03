@@ -1,5 +1,5 @@
 ActiveAdmin.register NewsWall do
-  permit_params :slogan, :title, :subtitle, :author, :content, :section_id, :image
+  permit_params :title, :subtitle, :author, :content, :section_id, :image
 
   filter :email
   filter :current_sign_in_at
@@ -9,7 +9,6 @@ ActiveAdmin.register NewsWall do
   index do
     selectable_column
     id_column
-    column :slogan
     column :title
     column :subtitle
     column :author
@@ -21,7 +20,6 @@ ActiveAdmin.register NewsWall do
 
   form do |f|
     f.inputs do
-      f.input :slogan
       f.input :title
       f.input :subtitle
       f.input :author
@@ -43,7 +41,6 @@ ActiveAdmin.register NewsWall do
 
   show do
     attributes_table do
-      row :slogan
       row :title
       row :subtitle
       row :author

@@ -10,5 +10,5 @@ class NewsWall < ApplicationRecord
     reflect_on_all_associations.map(&:name)
   end
 
-  validates_presence_of :title, :slogan, :content, :section
+  validates_presence_of :title, :content, :section
 end
