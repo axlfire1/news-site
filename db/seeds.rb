@@ -19,21 +19,71 @@ if Rails.env == 'development'
   AdminUser.create!(email: 'publisher2@example.com', password: 'password', password_confirmation: 'password', role: 1) 
 
   section = Section.create!(name: 'police')
-  100.times do |iterator|
+
+  CONTENT_NEW = <<~TEXT
+    En lo que va de este segundo día del año nuevo, se reportó un incendio en un taller mecánico en el municipio de Apizaco, mismo que dejó cuantiosos daños materiales.
+
+    De acuerdo con información preliminar, el incendio se registró en un taller de hojalatería y pintura, localizado en la colonia Covadonga, en Apizaco.
+    
+    Al arribar los bomberos, protección civil municipal e incluso ambulancias de la Cruz Roja, sólo se registraron daños materiales en 4 autobuses y un microbús, que quedaron totalmente calcinados.
+    
+    Por la noche del lunes, se reportó el incendio en el relleno sanitario de Panotla, mismo que comenzó el lunes por la noche y se mantenía personal de bomberos tratando de sofocar el incendio.
+  TEXT
+
+  folder_path = Rails.root.join("db", "seeds","images")
+
+  file_news_names = Dir.entries(folder_path).select do |entry|
+    File.file?(File.join(folder_path, entry)) && entry.start_with?("n")
+  end
+
+  file_article_names = Dir.entries(folder_path).select do |entry|
+    File.file?(File.join(folder_path, entry)) && entry.start_with?("ar")
+  end
+
+  50.times do |iterator|
     NewsWall.create!(
-      title: "mytile_#{iterator}",
+      title: "Incendios desatados en Tlaxcala deja daños materiales en relleno sanitario y taller mecánico",
       subtitle: "mysubtitle",
-      author: "my_author",
-      content: "my_content",
-      section: section
+      author: "david sarmiento",
+      content: CONTENT_NEW,
+      section: section,
+      image: File.open(Rails.root.join("db", "seeds","images", file_news_names.sample))
     )
 
-    Announcement.create!(
-      section: section,
-      is_enabled: true,
-      is_global: true,
-      customer_name: "annoncement#{iterator}",
-      customer_url: "customer_us_#{iterator}"
+    Article.create!(
+      image: File.open(Rails.root.join("db", "seeds","images", file_article_names.sample)),
+      title: 'daños materiales en relleno sanitario',
+      author: 'un indio',
+      content: CONTENT_NEW,
+      social_media_contact: "na",
+      foot_note: 'info por un chismoso'
     )
   end
+
+  Announcement.create!(
+    section: section,
+    is_enabled: true,
+    is_global: true,
+    customer_name: "cocacola",
+    customer_url: "https://cocacola.com",
+    image: File.open(Rails.root.join("db", "seeds","images", "an1.png"))
+  )
+
+  Announcement.create!(
+    section: section,
+    is_enabled: true,
+    is_global: true,
+    customer_name: "foxsports",
+    customer_url: "https://foxsports.com",
+    image: File.open(Rails.root.join("db", "seeds","images", "an2.png"))
+  )
+
+  Announcement.create!(
+    section: section,
+    is_enabled: true,
+    is_global: true,
+    customer_name: "kodak",
+    customer_url: "https://kodak.com",
+    image: File.open(Rails.root.join("db", "seeds","images", "an3.jpg"))
+  )
 end
