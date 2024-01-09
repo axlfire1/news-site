@@ -1,4 +1,6 @@
 ActiveAdmin.register AdminUser do
+  menu label: proc { I18n.t("active_admin.admin_users") }
+
   permit_params :email, :names, :last_name, :password, :password_confirmation, :phone, :role
 
   index do

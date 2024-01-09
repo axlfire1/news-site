@@ -1,0 +1,9 @@
+es:
+  hello: "Hello world"
+  active_admin:
+    dashboard: "Tablero"
+    announcement: "Anuncios"
+    admin_users: "Administrar Usuarios"
+    articles: "Reseñas"
+    news: "Noticias"
+    sections: "Secciones"

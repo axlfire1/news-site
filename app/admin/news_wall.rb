@@ -1,4 +1,5 @@
 ActiveAdmin.register NewsWall do
+  menu label: proc { I18n.t("active_admin.news") }
   permit_params :title, :subtitle, :author, :content, :section_id, :image
 
   filter :email

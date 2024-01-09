@@ -1,4 +1,6 @@
 ActiveAdmin.register Section do
+  menu label: proc { I18n.t("active_admin.sections") }
+
   actions :all, except: [:destroy]
 
   permit_params :name

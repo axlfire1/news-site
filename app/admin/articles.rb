@@ -1,4 +1,6 @@
 ActiveAdmin.register Article do
+  menu label: proc { I18n.t("active_admin.articles") }
+
   permit_params :title, :author, :content, :social_media_contact, :foot_note, :image
   actions :all, except: [:destroy]
 

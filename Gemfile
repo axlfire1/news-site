@@ -47,6 +47,8 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'graphicsmagick', '~> 1.0', '>= 1.0.6'
 gem 'cancancan', '~> 3.4'
+gem 'rails-i18n'
+gem 'devise-i18n'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]

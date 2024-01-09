@@ -1,4 +1,7 @@
 ActiveAdmin.register Announcement do
+
+  menu label: proc { I18n.t("active_admin.announcement") }
+
   actions :all, except: [:destroy]
 
   permit_params :section_id, :is_enabled, :is_global, :customer_name, :customer_url, :image
