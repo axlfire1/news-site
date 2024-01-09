@@ -34,7 +34,7 @@ div{overflow:hidden}
 #f_menu{display:block}
 .body_wrapper{background:url("./images/body_bg.png") repeat; margin-top:30px; margin-bottom:30px}
 .header_area{}
-.logo{margin-top:20px}
+.logo{margin-top:10px; margin-bottom:10px; width:500px; margin-left:50px}
 .top_menu{margin-left:60px; margin-top:60px; width:330px}
 .top_menu ul{list-style:none outside none; margin:0; padding:0}
 .top_menu ul li{float:left; border-right:2px solid #000}
